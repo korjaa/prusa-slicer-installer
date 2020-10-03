@@ -48,15 +48,13 @@ ${APPIMAGE}: cache/prusa-slicer.AppImage
 list:
 	ls -lah "${HOME}/.local/share/applications/"
 
-.PHONY: appimage
-appimage: ${APPIMAGE}
-
-.PHONY: icon
-icon: ${ICON_FILE}
-
-.PHONY: desktop
-desktop: ${DESKTOP_FILE}
-
 #  Install target
 # =================
-install: appimage icon desktop
+install: ${APPIMAGE} ${ICON_FILE} ${DESKTOP_FILE}
+
+#  Uninstall target
+# ==================
+uninstall:
+	rm ${APPIMAGE}
+	rm ${ICON_FILE}
+	rm ${DESKTOP_FILE}
